@@ -1,6 +1,6 @@
 package fr.albotw.Engine.input;
 
-import fr.albot.GameOfLife.Engine.UI.UI;
+import fr.albotw.Engine.UI.UI;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.nuklear.Nuklear.*;

@@ -1,17 +1,17 @@
 package fr.albotw.Engine.input;
 
+import fr.albotw.Engine.UI.UI;
 import org.lwjgl.nuklear.NkVec2;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.DoubleBuffer;
 
+import static fr.albotw.Engine.CONFIG.MOUSE_SENSITIVITY;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.nuklear.Nuklear.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
 
 public class Mouse {
-    public static float MOUSE_SENSITIVITY;
-
     public static double Xoffset;
     public static double Yoffset;
 
@@ -32,7 +32,7 @@ public class Mouse {
     }
 
     public static void processMousePosition(long window, double xpos, double ypos) {
-        nk_input_motion(fr.albot.GameOfLife.Engine.UI.UI.context, (int) xpos, (int) ypos);
+        nk_input_motion(UI.context, (int) xpos, (int) ypos);
         Mouse.Xoffset = (Mouse.lastX - xpos) * MOUSE_SENSITIVITY;
         Mouse.Yoffset = (Mouse.lastY - ypos) * MOUSE_SENSITIVITY;
 
@@ -63,7 +63,7 @@ public class Mouse {
                     nkButton = NK_BUTTON_LEFT;
                     Mouse.LMBPress = (action == GLFW_PRESS);
             }
-            nk_input_button(fr.albot.GameOfLife.Engine.UI.UI.context, nkButton, x, y, action == GLFW_PRESS);
+            nk_input_button(UI.context, nkButton, x, y, action == GLFW_PRESS);
         }
     }
 
@@ -72,7 +72,7 @@ public class Mouse {
             NkVec2 scroll = NkVec2.malloc(stack)
                     .x((float) xoffset)
                     .y((float) yoffset);
-            nk_input_scroll(fr.albot.GameOfLife.Engine.UI.UI.context, scroll);
+            nk_input_scroll(UI.context, scroll);
         }
     }
 }

@@ -1,5 +1,6 @@
 package fr.albotw.Engine.GL;
 
+import fr.albotw.Engine.UI.UI;
 import fr.albotw.Engine.input.Keyboard;
 import fr.albotw.Engine.input.Mouse;
 import org.joml.Matrix4f;
@@ -112,7 +113,7 @@ public class Window {
         }
 
         try {
-            fr.albot.GameOfLife.Engine.UI.UI.instance.init(glfwWindow);
+            UI.instance.init(glfwWindow);
         } catch (Exception e) {
             e.printStackTrace();
         }

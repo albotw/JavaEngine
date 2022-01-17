@@ -15,6 +15,9 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.Objects;
 
+import static fr.albotw.Engine.CONFIG.WINDOW_HEIGHT;
+import static fr.albotw.Engine.CONFIG.WINDOW_WIDTH;
+import static fr.albotw.Engine.Util.ioResourceToByteBuffer;
 import static org.lwjgl.nuklear.Nuklear.*;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -28,7 +31,7 @@ public class UI {
     public static UI instance;
     public static NkContext context;
 
-    private fr.albot.GameOfLife.Engine.UI.UILayout layout;
+    private ILayout layout;
 
     private NkUserFont default_font;
     private NkBuffer cmds;
@@ -46,8 +49,10 @@ public class UI {
         }
     }
 
-    private UI() {
-        this.layout = new fr.albot.GameOfLife.Engine.UI.UILayout();
+    private UI() {}
+
+    public void setLayout(ILayout layout) {
+        this.layout = layout;
     }
 
     public void init(long window) throws Exception {
@@ -227,7 +232,10 @@ public class UI {
     }
 
     public void render(int AA, int max_vertex_buffer, int max_element_buffer) {
-        layout.layout(0, 0);
+        if (this.layout != null) {
+            layout.layout(layout.getX(), layout.getY());
+        };
+
         try {
             // setup global state
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
