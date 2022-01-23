@@ -1,6 +1,5 @@
 package fr.albotw.Engine.geometry;
 
-import fr.albotw.Engine.textures.TextureID;
 import org.joml.Vector3f;
 import org.lwjgl.system.MemoryUtil;
 

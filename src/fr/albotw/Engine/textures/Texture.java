@@ -14,9 +14,9 @@ import static org.lwjgl.stb.STBImage.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
 
 public class Texture {
-    private int handle;
-    private int width;
-    private int height;
+    private final int handle;
+    private final int width;
+    private final int height;
 
     public Texture(String path) {
         ByteBuffer image = null;

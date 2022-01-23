@@ -2,23 +2,31 @@ package fr.albotw.Engine.textures;
 
 import java.util.HashMap;
 
+/**
+ * Il est conseillé d'utiliser une énumération avec les noms des textures -> string pour éviter les typos
+ * et ne pas oublier les handles.
+ */
 public class TextureAtlas {
-    private HashMap<TextureID, Texture> atlas;
+    private HashMap<String, Texture> atlas;
+    private HashMap<String, String> texturesToLoad;
 
     public TextureAtlas() {
-        this.atlas = new HashMap<TextureID, Texture>();
+        this.atlas = new HashMap<String, Texture>();
+        this.texturesToLoad = new HashMap<String, String>();
     }
 
     public void load() {
-        Texture cube = new Texture("ressources/texture.jpg");
-        this.atlas.put(TextureID.CUBE, cube);
-
-        //ajouter toutes les textures nécessaires au programme ici.
+        this.texturesToLoad.forEach((key, value) -> {
+            Texture texture = new Texture(value);
+            this.atlas.put(key, texture);
+        });
     }
 
-    public void bind(TextureID id) {
+    public void bind(String id) {
         this.atlas.get(id).bind();
     }
 
-
+    public void addTexture(String handle, String dir) {
+        this.texturesToLoad.put(handle, dir);
+    }
 }

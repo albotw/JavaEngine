@@ -12,8 +12,10 @@ public class Keyboard {
     public static boolean RIGHT_press;
     public static boolean Z_press;
     public static boolean S_press;
-
-    public static boolean ZERO_press;
+    public static boolean Q_press;
+    public static boolean D_press;
+    public static boolean SPACE_press;
+    public static boolean SHIFT_press;
 
     public static void init(long window) {
         glfwSetKeyCallback(window, Keyboard::processKeyboardEvents);
@@ -35,6 +37,15 @@ public class Keyboard {
                 break;
             case GLFW_KEY_S:
                 S_press = press;
+                break;
+            case GLFW_KEY_Q:
+                Q_press = press;
+                break;
+            case GLFW_KEY_D:
+                D_press = press;
+                break;
+            case GLFW_KEY_SPACE:
+                SPACE_press = press;
                 break;
             case GLFW_KEY_DELETE:
                 nk_input_key(UI.context, NK_KEY_DEL, press);
@@ -79,6 +90,7 @@ public class Keyboard {
             case GLFW_KEY_LEFT_SHIFT:
             case GLFW_KEY_RIGHT_SHIFT:
                 nk_input_key(UI.context, NK_KEY_SHIFT, press);
+                SHIFT_press = press;
                 break;
             case GLFW_KEY_LEFT_CONTROL:
             case GLFW_KEY_RIGHT_CONTROL:

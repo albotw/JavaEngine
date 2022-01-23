@@ -3,8 +3,9 @@ package fr.albotw.Engine.GL;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
+import static fr.albotw.Engine.CONFIG.EPSILON;
+
 public class Camera {
-    public static float EPSILON = 0.000001f;
     private final Vector3f position;
     private final Vector3f target;
     private final Vector3f up;

@@ -12,6 +12,7 @@ import org.lwjgl.system.Callback;
 
 import java.nio.IntBuffer;
 
+import static fr.albotw.Engine.CONFIG.FOV;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.ARBDebugOutput.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -29,8 +30,6 @@ public class Window {
     private boolean vSync;
 
     private Matrix4f projectionMatrix;
-
-    public static float FOV;
 
     public Window(int width, int height, String title, boolean vSync) {
         this.width = width;
